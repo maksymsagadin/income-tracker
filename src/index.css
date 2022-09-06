@@ -4,6 +4,6 @@
 }
 
 body {
-    background: url(./assets/bg-blue.jpg);
+    background: linear-gradient(90deg, #0f0c293f 0%, #302b6376 50%, #24243e47 100%), url(./assets/bg-dark.png);
     background-size: cover;
 }
