@@ -7,19 +7,19 @@ export default makeStyles((theme) => ({
     },
   },
   desktop: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       display: 'none',
     },
   },
   main: {
-    [theme.breakpoints.up('sm')]: {
-      paddingBottom: '5%',
+    [theme.breakpoints.down('sm')]: {
+      paddingBottom: '0%',
     },
   },
   last: {
-    [theme.breakpoints.down('sm')]: {
-      marginBottom: theme.spacing(3),
-      paddingBottom: '200px',
+    [theme.breakpoints.down('xs')]: {
+    //   marginBottom: theme.spacing(2),
+      paddingBottom: '500px',
     },
   },
   grid: {
