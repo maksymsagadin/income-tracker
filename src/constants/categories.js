@@ -21,6 +21,7 @@ export const expenseCategories = [
   { name: 'Food', amount: 0, color: expenseColors[4] },
   { name: 'Shopping', amount: 0, color: expenseColors[5] },
   { name: 'House', amount: 0, color: expenseColors[6] },
+  { name: 'Rent', amount: 0, color: expenseColors[6] },
   { name: 'Entertainment', amount: 0, color: expenseColors[7] },
   { name: 'Phone', amount: 0, color: expenseColors[8] },
   { name: 'Pets', amount: 0, color: expenseColors[9] },
