@@ -5,6 +5,7 @@ import useStyles from './styles'
 import { v4 as uuidv4 } from 'uuid'
 import formatDate from '../../../utils/formatDate'
 import { incomeCategories, expenseCategories } from '../../../constants/categories'
+import { resetCategories } from '../../../constants/categories'
 
 const initialState = {
     amount: '',
@@ -22,6 +23,7 @@ const Form = () => {
     const createTransaction = () => {
         const transaction = { ...formData, amount: Number(formData.amount), id: uuidv4() }
         addTransaction(transaction)
+        resetCategories()
         setFormData(initialState)
     }
     return (
@@ -44,7 +46,7 @@ const Form = () => {
                 <FormControl fullWidth>
                     <InputLabel>Category</InputLabel>
                     <Select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })}>
-                        {selectedCategories.map((category) => <MenuItem key={category.type} value={category.type}> {category.type} </MenuItem>)}
+                        {selectedCategories.map((category) => <MenuItem key={category.name} value={category.name}> {category.name} </MenuItem>)}
                     </Select>
                 </FormControl>
             </Grid>
