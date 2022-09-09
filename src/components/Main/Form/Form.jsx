@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react'
+import { ExpenseTrackerContext } from '../../../context/context'
 import { TextField, Typography, Grid, Button, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core'
 import useStyles from './styles'
 import { v4 as uuidv4 } from 'uuid'
 import formatDate from '../../../utils/formatDate'
-import { ExpenseTrackerContext } from '../../../context/context'
+import { incomeCategories, expenseCategories } from '../../../constants/categories'
 
 const initialState = {
     amount: '',
@@ -16,6 +17,7 @@ const Form = () => {
     const classes = useStyles()
     const { addTransaction } = useContext(ExpenseTrackerContext)
     const [ formData, setFormData ] = useState(initialState)
+    const selectedCategories = formData.type === 'Income' ? incomeCategories : expenseCategories
 
     const createTransaction = () => {
         const transaction = { ...formData, amount: Number(formData.amount), id: uuidv4() }
@@ -42,8 +44,7 @@ const Form = () => {
                 <FormControl fullWidth>
                     <InputLabel>Category</InputLabel>
                     <Select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })}>
-                        <MenuItem value='Business'>Business</MenuItem>
-                        <MenuItem value='Salary'>Salary</MenuItem>
+                        {selectedCategories.map((category) => <MenuItem key={category.type} value={category.type}> {category.type} </MenuItem>)}
                     </Select>
                 </FormControl>
             </Grid>
