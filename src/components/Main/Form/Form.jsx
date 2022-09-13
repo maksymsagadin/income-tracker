@@ -3,6 +3,7 @@ import { ExpenseTrackerContext } from '../../../context/context'
 import { TextField, Typography, Grid, Button, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core'
 import useStyles from './styles'
 import { v4 as uuidv4 } from 'uuid'
+import { useSpeechContext } from '@speechly/react-client'
 import formatDate from '../../../utils/formatDate'
 import { incomeCategories, expenseCategories } from '../../../constants/categories'
 import { resetCategories } from '../../../constants/categories'
@@ -18,6 +19,7 @@ const Form = () => {
     const classes = useStyles()
     const { addTransaction } = useContext(ExpenseTrackerContext)
     const [ formData, setFormData ] = useState(initialState)
+    const { segment } = useSpeechContext()
     const selectedCategories = formData.type === 'Income' ? incomeCategories : expenseCategories
 
     const createTransaction = () => {
@@ -30,7 +32,7 @@ const Form = () => {
         <Grid container spacing={2}>
             <Grid item xs={12}>
                 <Typography align='center' gutterBottom variant='subtitle2'>
-                    ...
+                    {segment && segment.words.map((word) => word.value).join(' ')}
                 </Typography>
             </Grid>
             <Grid item xs={6}>
