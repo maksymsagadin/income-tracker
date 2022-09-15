@@ -10,7 +10,7 @@ const Main = () => {
     const classes = useStyles()
     const { balance } = useContext(ExpenseTrackerContext)
     return (
-        <Card className={classes.root}>
+        <Card>
             <CardHeader title='Income Tracker' subheader='Finance Manager'/>
             <CardContent>
                 <Typography align="center" variant="h5">Total Balance: ${balance}</Typography>
