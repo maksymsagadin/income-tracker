@@ -7,7 +7,7 @@ export const ExpenseTrackerContext = createContext(initialState)
 
 export const Provider = ({ children }) => {
     const [transactions, dispatch] = useReducer(contextReducer, initialState)
-    const balance = transactions.reduce(( total, currValue ) => ( currValue === 'Expense' ? total - currValue.amount : total + currValue.amount), 0)
+    const balance = transactions.reduce(( accumulator, currValue ) => ( currValue.type === 'Expense' ? accumulator - currValue.amount : accumulator + currValue.amount), 0)
     // Actions
     const addTransaction = (transaction) => {
         dispatch({ type: 'ADD_TRANSACTION', payload: transaction })
