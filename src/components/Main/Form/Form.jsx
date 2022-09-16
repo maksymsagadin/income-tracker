@@ -11,7 +11,7 @@ import Snackbar from '../../Snackbar/Snackbar'
 
 const initialState = {
     amount: '',
-    category: '',
+    category: 'Salary',
     type: 'Income',
     date: formatDate(new Date()),
 }
@@ -25,7 +25,7 @@ const Form = () => {
     const selectedCategories = formData.type === 'Income' ? incomeCategories : expenseCategories
 
     const createTransaction = () => {
-        if (Number.isNaN(Number(formData.amount)) || !formData.date.includes('-')) return
+        if (Number.isNaN(Number(formData.amount)) || !formData.date.includes('-') || formData.amount <= 0 ) return
         const transaction = { ...formData, amount: Number(formData.amount), id: uuidv4() }
         addTransaction(transaction)
         setOpen(true)
@@ -89,7 +89,7 @@ const Form = () => {
             <Grid item xs={6}>
                 <FormControl fullWidth>
                     <InputLabel>Category</InputLabel>
-                    <Select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })}>
+                    <Select required={true} value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })}>
                         {selectedCategories.map((category) => <MenuItem key={category.name} value={category.name}> {category.name} </MenuItem>)}
                     </Select>
                 </FormControl>
