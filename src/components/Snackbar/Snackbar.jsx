@@ -13,7 +13,7 @@ const Snackbar = ({ open, setOpen, action }) => {
 
     return (
         <CustomSnackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={open} autoHideDuration={5000} onClose={handleClose}>
-            <MuiAlert severity={ action === 'add' ? 'Success' : 'Error'} elevation={6} variant='filled' onClose={handleClose}>
+            <MuiAlert severity={ action === 'add' ? 'success' : 'error'} elevation={6} variant='filled' onClose={handleClose}>
                 { action === 'add' ? 'Transaction created successfully.' : 'Transaction modified successfully.'}
             </MuiAlert>
         </CustomSnackbar>
