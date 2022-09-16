@@ -19,7 +19,7 @@ export default makeStyles((theme) => ({
   last: {
     [theme.breakpoints.down('xs')]: {
     //   marginBottom: theme.spacing(2),
-      paddingBottom: '500px',
+      paddingBottom: '150px',
     },
   },
   grid: {
